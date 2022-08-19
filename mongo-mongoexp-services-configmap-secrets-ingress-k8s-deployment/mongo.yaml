@@ -40,5 +40,5 @@ spec:
     app: mongodb
   ports:
     - protocol: TCP
-      port: 27017
+      port: 27000 # i have mongo DB already running inmy local so i want to use this port for my mongo DB POD.
       targetPort: 27017
