@@ -33,10 +33,10 @@ spec:
         - name: ME_CONFIG_MONGODB_SERVER
           valueFrom: 
             configMapKeyRef:
-              name: mongodb-configmap
+              name: mongodb-configmap # maps the configuration to the container
               key: database_url
         - name: ME_CONFIG_MONGODB_PORT
-          value: "27000"
+          value: "27000" # mongoDB port for pod
 ---
 apiVersion: v1
 kind: Service
@@ -45,9 +45,9 @@ metadata:
 spec:
   selector:
     app: mongo-express
-  type: LoadBalancer  
+  type: LoadBalancer  # to make it as external service
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 8081
-      #nodePort: 30000
+      port: 8081 # exposed service port
+      targetPort: 8081 # container port
+      nodePort: 30000 # Port for external ip address which you can put into browser
